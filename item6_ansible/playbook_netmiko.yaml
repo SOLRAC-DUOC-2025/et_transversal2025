@@ -1,0 +1,14 @@
+- name: Configuración básica con Netmiko
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Mostrar versión de IOS
+      ios_command:
+        commands:
+          - show version
+      register: salida
+
+    - name: Mostrar resultado
+      debug:
+        var: salida.stdout_lines
